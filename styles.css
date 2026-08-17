@@ -1,0 +1,359 @@
+/*
+ * Plawe Native Sidebar
+ * Mobile-first, local-only styling for Obsidian's left sidebar.
+ */
+
+body.plawe-native-sidebar {
+  --plawe-sidebar-accent: 154, 139, 232;
+  --plawe-sidebar-row-height: 44px;
+  --plawe-sidebar-row-radius: 12px;
+  --plawe-sidebar-inline-gap: 7px;
+  --plawe-sidebar-border: rgba(255, 255, 255, 0.07);
+  --plawe-sidebar-surface: rgba(255, 255, 255, 0.045);
+  --plawe-sidebar-surface-strong: rgba(255, 255, 255, 0.075);
+  --plawe-sidebar-muted: rgba(255, 255, 255, 0.52);
+  --plawe-sidebar-text: rgba(255, 255, 255, 0.9);
+  --plawe-sidebar-background: #070708;
+  --plawe-sidebar-background-raised: rgba(15, 15, 17, 0.88);
+}
+
+body.theme-light.plawe-native-sidebar {
+  --plawe-sidebar-border: rgba(30, 27, 41, 0.08);
+  --plawe-sidebar-surface: rgba(30, 27, 41, 0.045);
+  --plawe-sidebar-surface-strong: rgba(30, 27, 41, 0.075);
+  --plawe-sidebar-muted: rgba(30, 27, 41, 0.52);
+  --plawe-sidebar-text: rgba(20, 18, 28, 0.9);
+  --plawe-sidebar-background: #f5f5f7;
+  --plawe-sidebar-background-raised: rgba(250, 250, 252, 0.88);
+}
+
+body.plawe-native-sidebar.plawe-sidebar-compact {
+  --plawe-sidebar-row-height: 36px;
+  --plawe-sidebar-row-radius: 10px;
+  --plawe-sidebar-inline-gap: 5px;
+}
+
+body.is-mobile.plawe-native-sidebar.plawe-sidebar-compact {
+  --plawe-sidebar-row-height: 40px;
+}
+
+body.plawe-native-sidebar .workspace-drawer.mod-left,
+body.plawe-native-sidebar .workspace-drawer.mod-left .workspace-drawer-inner,
+body.plawe-native-sidebar .workspace-split.mod-left-split,
+body.plawe-native-sidebar .workspace-split.mod-left-split .workspace-tabs,
+body.plawe-native-sidebar .workspace-split.mod-left-split .workspace-tab-container {
+  background-color: var(--plawe-sidebar-background);
+  color: var(--plawe-sidebar-text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", var(--font-interface);
+}
+
+body.plawe-native-sidebar .workspace-drawer.mod-left .workspace-drawer-header,
+body.plawe-native-sidebar .workspace-split.mod-left-split .workspace-tab-header-container {
+  border-bottom: 1px solid var(--plawe-sidebar-border);
+  background: var(--plawe-sidebar-background-raised);
+  -webkit-backdrop-filter: saturate(150%) blur(22px);
+  backdrop-filter: saturate(150%) blur(22px);
+}
+
+body.plawe-native-sidebar .workspace-drawer.mod-left .workspace-drawer-header-name-text {
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+body.plawe-native-sidebar .workspace-split.mod-left-split .workspace-tab-header,
+body.plawe-native-sidebar .workspace-drawer.mod-left .workspace-drawer-tab-option-item {
+  border-radius: 11px;
+}
+
+body.plawe-native-sidebar .workspace-split.mod-left-split .workspace-tab-header.is-active,
+body.plawe-native-sidebar .workspace-drawer.mod-left .workspace-drawer-tab-option-item.is-active {
+  color: rgb(var(--plawe-sidebar-accent));
+  background: rgba(var(--plawe-sidebar-accent), 0.13);
+  box-shadow: inset 0 0 0 1px rgba(var(--plawe-sidebar-accent), 0.13);
+}
+
+body.plawe-native-sidebar .workspace-leaf-content[data-type="file-explorer"] .nav-header {
+  padding: 9px 11px 7px;
+}
+
+body.plawe-native-sidebar.plawe-sidebar-calm-chrome
+  .workspace-leaf-content[data-type="file-explorer"]
+  .nav-header {
+  border-bottom: 0;
+}
+
+body.plawe-native-sidebar .workspace-drawer.mod-left .clickable-icon,
+body.plawe-native-sidebar .workspace-split.mod-left-split .clickable-icon,
+body.plawe-native-sidebar .plawe-sidebar-action {
+  width: 38px;
+  min-width: 38px;
+  height: 38px;
+  padding: 9px;
+  border: 0;
+  border-radius: 12px;
+  color: var(--plawe-sidebar-muted);
+  background: var(--plawe-sidebar-surface);
+  box-shadow: inset 0 0 0 1px var(--plawe-sidebar-border);
+}
+
+body.plawe-native-sidebar.plawe-sidebar-calm-chrome
+  .workspace-drawer.mod-left
+  .clickable-icon:not(.plawe-sidebar-action),
+body.plawe-native-sidebar.plawe-sidebar-calm-chrome
+  .workspace-split.mod-left-split
+  .clickable-icon:not(.plawe-sidebar-action) {
+  background: transparent;
+  box-shadow: none;
+}
+
+body.plawe-native-sidebar .workspace-drawer.mod-left .clickable-icon:active,
+body.plawe-native-sidebar .workspace-split.mod-left-split .clickable-icon:active,
+body.plawe-native-sidebar .plawe-sidebar-action:active {
+  color: rgb(var(--plawe-sidebar-accent));
+  background: rgba(var(--plawe-sidebar-accent), 0.14);
+  transform: scale(0.94);
+}
+
+body.plawe-native-sidebar .plawe-sidebar-context {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  flex: 0 0 auto;
+  margin: 0 8px 4px;
+  padding: 8px 8px 11px;
+  border-bottom: 1px solid var(--plawe-sidebar-border);
+}
+
+body.plawe-native-sidebar .plawe-sidebar-context-copy {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+body.plawe-native-sidebar .plawe-sidebar-eyebrow {
+  display: none;
+  margin-bottom: 2px;
+  color: rgb(var(--plawe-sidebar-accent));
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+body.plawe-native-sidebar .plawe-sidebar-title {
+  overflow: hidden;
+  color: var(--plawe-sidebar-text);
+  font-size: 17px;
+  font-weight: 680;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.plawe-native-sidebar.plawe-sidebar-large-title .plawe-sidebar-context {
+  padding-top: 13px;
+}
+
+body.plawe-native-sidebar.plawe-sidebar-large-title .plawe-sidebar-eyebrow {
+  display: block;
+}
+
+body.plawe-native-sidebar.plawe-sidebar-large-title .plawe-sidebar-title {
+  font-size: 27px;
+  font-weight: 720;
+  letter-spacing: -0.035em;
+}
+
+body.plawe-native-sidebar .plawe-sidebar-path {
+  display: none;
+  overflow: hidden;
+  margin-top: 4px;
+  color: var(--plawe-sidebar-muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.plawe-native-sidebar.plawe-sidebar-show-path .plawe-sidebar-path {
+  display: block;
+}
+
+body.plawe-native-sidebar .plawe-sidebar-actions {
+  display: flex;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+body.plawe-native-sidebar .plawe-sidebar-actions:empty {
+  display: none;
+}
+
+body.plawe-native-sidebar .plawe-sidebar-action {
+  appearance: none;
+  cursor: var(--cursor);
+}
+
+body.plawe-native-sidebar .nav-files-container {
+  padding: 5px 3px calc(12px + env(safe-area-inset-bottom, 0px));
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+
+body.plawe-native-sidebar .nav-files-container::-webkit-scrollbar,
+body.plawe-native-sidebar .workspace-drawer.mod-left ::-webkit-scrollbar,
+body.plawe-native-sidebar .workspace-split.mod-left-split ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+body.plawe-native-sidebar .nav-file-title,
+body.plawe-native-sidebar .nav-folder-title {
+  min-height: var(--plawe-sidebar-row-height);
+  margin: 1px var(--plawe-sidebar-inline-gap);
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-inline: 9px;
+  border-radius: var(--plawe-sidebar-row-radius);
+  color: var(--plawe-sidebar-muted);
+  transition:
+    color 120ms ease,
+    background-color 120ms ease,
+    box-shadow 120ms ease,
+    transform 80ms ease;
+}
+
+body.plawe-native-sidebar .nav-folder-title {
+  color: var(--plawe-sidebar-text);
+  font-weight: 610;
+  letter-spacing: -0.008em;
+}
+
+body.plawe-native-sidebar.plawe-sidebar-folder-tint .nav-folder-title {
+  color: rgba(208, 201, 255, 0.9);
+}
+
+body.theme-light.plawe-native-sidebar.plawe-sidebar-folder-tint .nav-folder-title {
+  color: rgba(76, 63, 147, 0.9);
+}
+
+body.plawe-native-sidebar .nav-file-title-content,
+body.plawe-native-sidebar .nav-folder-title-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.plawe-native-sidebar .nav-folder-collapse-indicator {
+  display: grid;
+  width: 26px;
+  min-width: 26px;
+  height: 26px;
+  margin-inline-start: -5px;
+  place-items: center;
+  color: var(--plawe-sidebar-muted);
+}
+
+body.plawe-native-sidebar .tree-item-children {
+  margin-inline-start: 11px;
+  padding-inline-start: 4px;
+  border-inline-start: 1px solid var(--plawe-sidebar-border);
+}
+
+body.plawe-native-sidebar .nav-file-title.is-active,
+body.plawe-native-sidebar .nav-file-title.plawe-sidebar-active-file {
+  color: rgba(232, 228, 255, 0.98);
+  background: rgba(var(--plawe-sidebar-accent), 0.16);
+  box-shadow:
+    inset 0 0 0 1px rgba(var(--plawe-sidebar-accent), 0.14),
+    0 5px 18px rgba(0, 0, 0, 0.12);
+  font-weight: 620;
+}
+
+body.theme-light.plawe-native-sidebar .nav-file-title.is-active,
+body.theme-light.plawe-native-sidebar .nav-file-title.plawe-sidebar-active-file {
+  color: rgba(54, 43, 117, 0.98);
+}
+
+body.plawe-native-sidebar .nav-folder-title.plawe-sidebar-active-path {
+  color: rgb(190, 179, 255);
+  background: rgba(var(--plawe-sidebar-accent), 0.075);
+}
+
+body.theme-light.plawe-native-sidebar .nav-folder-title.plawe-sidebar-active-path {
+  color: rgb(78, 63, 163);
+}
+
+body.plawe-native-sidebar .nav-file-title:active,
+body.plawe-native-sidebar .nav-folder-title:active,
+body.plawe-native-sidebar .tree-item-self:active {
+  background: var(--plawe-sidebar-surface-strong);
+  transform: scale(0.988);
+}
+
+body.plawe-native-sidebar .search-input-container,
+body.plawe-native-sidebar .search-row {
+  margin-inline: 9px;
+}
+
+body.plawe-native-sidebar .search-input-container input,
+body.plawe-native-sidebar .workspace-drawer.mod-left input[type="text"],
+body.plawe-native-sidebar .workspace-split.mod-left-split input[type="text"] {
+  min-height: 40px;
+  border: 1px solid var(--plawe-sidebar-border);
+  border-radius: 12px;
+  color: var(--plawe-sidebar-text);
+  background: var(--plawe-sidebar-surface);
+  box-shadow: none;
+}
+
+body.plawe-native-sidebar .search-input-container input:focus,
+body.plawe-native-sidebar .workspace-drawer.mod-left input[type="text"]:focus,
+body.plawe-native-sidebar .workspace-split.mod-left-split input[type="text"]:focus {
+  border-color: rgba(var(--plawe-sidebar-accent), 0.42);
+  box-shadow: 0 0 0 3px rgba(var(--plawe-sidebar-accent), 0.1);
+}
+
+body.plawe-native-sidebar .workspace-drawer.mod-left .tree-item-self,
+body.plawe-native-sidebar .workspace-split.mod-left-split .tree-item-self,
+body.plawe-native-sidebar .workspace-drawer.mod-left .tag-pane-tag,
+body.plawe-native-sidebar .workspace-split.mod-left-split .tag-pane-tag {
+  border-radius: var(--plawe-sidebar-row-radius);
+}
+
+@media (hover: hover) {
+  body.plawe-native-sidebar .workspace-drawer.mod-left .clickable-icon:hover,
+  body.plawe-native-sidebar .workspace-split.mod-left-split .clickable-icon:hover,
+  body.plawe-native-sidebar .nav-file-title:hover,
+  body.plawe-native-sidebar .nav-folder-title:hover {
+    color: var(--plawe-sidebar-text);
+    background: var(--plawe-sidebar-surface-strong);
+  }
+}
+
+@media (max-width: 600px) {
+  body.is-mobile.plawe-native-sidebar .plawe-sidebar-context {
+    margin-inline: 7px;
+    padding-inline: 9px;
+  }
+
+  body.is-mobile.plawe-native-sidebar.plawe-sidebar-large-title .plawe-sidebar-title {
+    font-size: 29px;
+  }
+
+  body.is-mobile.plawe-native-sidebar .nav-file-title,
+  body.is-mobile.plawe-native-sidebar .nav-folder-title {
+    margin-block: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.plawe-native-sidebar .nav-file-title,
+  body.plawe-native-sidebar .nav-folder-title,
+  body.plawe-native-sidebar .clickable-icon {
+    transition: none;
+  }
+}
