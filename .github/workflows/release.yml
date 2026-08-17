@@ -1,0 +1,41 @@
+name: Release Obsidian plugin
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - manifest.json
+      - main.js
+      - styles.css
+      - .github/workflows/release.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate plugin files
+        run: |
+          node --check main.js
+          node -e "const m=require('./manifest.json'); if(!m.id || !m.version || m.isDesktopOnly) process.exit(1)"
+
+      - name: Create or update version release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION=$(node -p "require('./manifest.json').version")
+          if gh release view "$VERSION" >/dev/null 2>&1; then
+            gh release upload "$VERSION" manifest.json main.js styles.css --clobber
+          else
+            gh release create "$VERSION" manifest.json main.js styles.css \
+              --target "$GITHUB_SHA" \
+              --title "Plawe Native Sidebar $VERSION" \
+              --notes "Mobile-first Beta für Obsidian auf iPhone, iPad und Mac."
+          fi
