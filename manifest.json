@@ -1,0 +1,10 @@
+{
+  "id": "plawe-native-sidebar",
+  "name": "Plawe Native Sidebar",
+  "version": "0.1.0",
+  "minAppVersion": "1.7.2",
+  "description": "Eine ruhigere, klarere und iOS-native linke Seitenleiste für Obsidian.",
+  "author": "Plawe",
+  "authorUrl": "https://github.com/plaweoffiziell-code",
+  "isDesktopOnly": false
+}
