@@ -1,0 +1,14 @@
+{
+  "name": "plawe-native-sidebar",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mobile-first native sidebar styling for Obsidian.",
+  "scripts": {
+    "check": "tsc --noEmit && node --check main.js"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "obsidian": "^1.13.1",
+    "typescript": "^5.9.0"
+  }
+}
